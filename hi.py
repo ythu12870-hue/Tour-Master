@@ -1,1 +1,1 @@
-print("hello Everyone")
+print(2+3)
