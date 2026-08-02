@@ -1685,15 +1685,29 @@ body.dark-mode header.scrolled {
     -webkit-text-fill-color: transparent;
 
 }
+
+
+
+
 .hero-content p {
+
+
     max-width:
     600px;
+
+
     font-size:
     1.7rem;
+
+
     color:
     rgba(255,255,255,.85);
+
+
     margin-bottom:
     3rem;
+
+
     animation:
     fadeLeft 1.2s ease;
 
@@ -1752,19 +1766,37 @@ body.dark-mode header.scrolled {
 
 
 .hero-stats .stat {
+
+
     border-left:
+
+
     3px solid var(--primary-color);
+
+
     padding-left:
+
+
     1.5rem;
+
+
 }
 
 
 
 .hero-stats h2 {
+
+
     font-size:
     3rem;
+
+
     color:white;
+
+
     font-weight:700;
+
+
 }
 
 
@@ -6882,6 +6914,8 @@ body.dark-mode .partner-logo {
 
 
     }
+
+
 }
 
 
@@ -6913,5 +6947,3 @@ body.dark-mode .partner-logo {
         ✔ Animations
 
 =========================================================== */
-
-    
