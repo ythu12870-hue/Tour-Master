@@ -1,67 +1,32 @@
-/* ==========================================================
+/* =====================================================
         TOUR MASTER TRAVEL AGENCY
 
-        SCRIPT.JS
+        script.js
 
         FEATURES:
 
-        ✔ Preloader
         ✔ Mobile Menu
-        ✔ Navbar Scroll Effect
-        ✔ Dark / Light Mode
-        ✔ Back To Top Button
-        ✔ Scroll Reveal Animation
+        ✔ Navbar Scroll Glass Effect
+        ✔ Dark Mode Toggle
         ✔ Counter Animation
+        ✔ Scroll Reveal
+        ✔ Back To Top
         ✔ Newsletter Validation
         ✔ Smooth Navigation
-        ✔ Image Lazy Loading
+        ✔ Booking Button Interaction
 
-=========================================================== */
-
-
-
-// ==========================
-// PRELOADER
-// ==========================
-
-
-window.addEventListener("load", () => {
-
-
-    const loader =
-    document.getElementById("preloader");
-
-
-    if(loader){
-
-        loader.style.opacity="0";
-
-        setTimeout(()=>{
-
-            loader.style.display="none";
-
-        },500);
-
-    }
-
-
-});
+===================================================== */
 
 
 
-
-
-// ==========================
+// ===============================
 // MOBILE MENU
-// ==========================
+// ===============================
 
 
-const menuBtn =
-document.querySelector(".menu-btn");
+const menuBtn = document.getElementById("menuBtn");
 
-
-const navLinks =
-document.querySelector(".nav-links");
+const navLinks = document.getElementById("navLinks");
 
 
 
@@ -71,20 +36,20 @@ if(menuBtn){
     menuBtn.addEventListener("click",()=>{
 
 
-        navLinks.classList.toggle("active");
+        navLinks.classList.toggle("hidden");
 
 
         menuBtn.innerHTML =
-        navLinks.classList.contains("active")
+
+        navLinks.classList.contains("hidden")
 
         ?
 
-        '<i class="fa-solid fa-xmark"></i>'
+        `<i class="fa-solid fa-bars"></i>`
 
         :
 
-        '<i class="fa-solid fa-bars"></i>';
-
+        `<i class="fa-solid fa-xmark"></i>`;
 
 
     });
@@ -94,23 +59,25 @@ if(menuBtn){
 
 
 
-// Close menu after clicking link
+
+// Close mobile menu when clicking link
 
 
-document.querySelectorAll(".nav-links a")
+document
+.querySelectorAll("#navLinks a")
 .forEach(link=>{
 
 
     link.addEventListener("click",()=>{
 
 
-        navLinks.classList.remove("active");
+        navLinks.classList.add("hidden");
 
 
         if(menuBtn){
 
             menuBtn.innerHTML =
-            '<i class="fa-solid fa-bars"></i>';
+            `<i class="fa-solid fa-bars"></i>`;
 
         }
 
@@ -125,13 +92,14 @@ document.querySelectorAll(".nav-links a")
 
 
 
-// ==========================
+
+// ===============================
 // NAVBAR SCROLL EFFECT
-// ==========================
+// ===============================
 
 
 const header =
-document.querySelector("header");
+document.getElementById("header");
 
 
 
@@ -141,15 +109,24 @@ window.addEventListener("scroll",()=>{
     if(window.scrollY > 80){
 
 
-        header.classList.add("scrolled");
+        header.classList.add(
+            "bg-dark/80",
+            "backdrop-blur-xl",
+            "shadow-lg"
+        );
 
 
     }
 
+
     else{
 
 
-        header.classList.remove("scrolled");
+        header.classList.remove(
+            "bg-dark/80",
+            "backdrop-blur-xl",
+            "shadow-lg"
+        );
 
 
     }
@@ -163,211 +140,108 @@ window.addEventListener("scroll",()=>{
 
 
 
-// ==========================
-// DARK / LIGHT MODE
-// ==========================
+// ===============================
+// DARK MODE
+// ===============================
 
 
-const themeBtn =
+const themeToggle =
 document.getElementById("themeToggle");
 
 
 
-if(themeBtn){
+let darkMode =
+localStorage.getItem("darkMode");
 
-
-    themeBtn.addEventListener("click",()=>{
-
-
-        document.body.classList.toggle(
-            "dark-mode"
-        );
-
-
-        if(
-            document.body.classList.contains(
-                "dark-mode"
-            )
-        ){
-
-
-            themeBtn.innerHTML =
-            '<i class="fa-solid fa-sun"></i>';
-
-
-            localStorage.setItem(
-                "theme",
-                "dark"
-            );
-
-
-        }
-
-
-        else{
-
-
-            themeBtn.innerHTML =
-            '<i class="fa-solid fa-moon"></i>';
-
-
-            localStorage.setItem(
-                "theme",
-                "light"
-            );
-
-
-        }
-
-
-    });
-
-
-}
-
-
-
-
-
-// Remember user theme
-
-
-if(
-localStorage.getItem("theme")
-==="dark"
-){
+if(darkMode==="enabled"){
 
 
     document.body.classList.add(
-        "dark-mode"
+        "dark"
     );
-
-
-    if(themeBtn){
-
-        themeBtn.innerHTML =
-        '<i class="fa-solid fa-sun"></i>';
-
-    }
 
 
 }
 
+if(themeToggle){
 
-
-
-
-
-
-// ==========================
-// BACK TO TOP
-// ==========================
-
-
-const topBtn =
-document.getElementById("topBtn");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-    if(window.scrollY > 400){
-
-
-        topBtn?.classList.add("active");
-
-
-    }
-
-    else{
-
-
-        topBtn?.classList.remove("active");
-
-
-    }
-
-
-});
-
-
-
-topBtn?.addEventListener(
+themeToggle.addEventListener(
 "click",
 ()=>{
 
 
-    window.scrollTo({
+document.body.classList.toggle(
+"dark"
+);
 
-        top:0,
 
-        behavior:"smooth"
 
-    });
+if(
+document.body.classList.contains("dark")
+){
 
+
+localStorage.setItem(
+"darkMode",
+"enabled"
+);
+
+themeToggle.innerHTML =
+
+`
+<i class="fa-solid fa-sun"></i>
+`;
+
+}
+
+else{
+
+localStorage.setItem(
+"darkMode",
+"disabled"
+);
+
+themeToggle.innerHTML =
+
+`
+<i class="fa-solid fa-moon"></i>
+`;
+
+
+}
 
 });
 
 
-
-
-
-
-
-
-// ==========================
-// SCROLL REVEAL
-// ==========================
-
+}
+// ===============================
+// SCROLL REVEAL ANIMATION
+// ===============================
 
 const revealElements =
 document.querySelectorAll(
 ".reveal"
 );
 
-
-
 function reveal(){
 
+revealElements.forEach(
+(element)=>{
+const position =
+element.getBoundingClientRect()
+.top;
 
-    revealElements.forEach(element=>{
+const screen =
+window.innerHeight - 100;
 
-
-        const windowHeight =
-        window.innerHeight;
-
-
-        const elementTop =
-        element.getBoundingClientRect()
-        .top;
-
-
-        const revealPoint =
-        100;
-
-
-
-        if(
-            elementTop <
-            windowHeight - revealPoint
-        ){
-
-
-            element.classList.add(
-                "active"
-            );
-
-
-        }
-
-
-    });
-
-
+if(position < screen){
+element.classList.add(
+"active"
+);
 }
 
-
+});
+}
 
 window.addEventListener(
 "scroll",
@@ -375,372 +249,259 @@ reveal
 );
 
 
-
 reveal();
-
-
-
-
-
-
-
-// ==========================
+// ===============================
 // COUNTER ANIMATION
-// ==========================
-
+// ===============================
 
 const counters =
 document.querySelectorAll(
 ".counter"
 );
 
-
-
-let counterStarted=false;
-
-
+let started=false;
 
 function startCounter(){
 
-
-    const statsSection =
-    document.querySelector(
-        ".statistics"
-    );
-
-
-    if(!statsSection)
-    return;
+const section =
+document.querySelector(
+".counter"
+);
 
 
 
-    const position =
-    statsSection
-    .getBoundingClientRect()
-    .top;
+if(!section)
+return;
 
 
 
-    if(
-        position <
-        window.innerHeight
-        &&
-        !counterStarted
-    ){
-
-
-        counterStarted=true;
+const top =
+section.getBoundingClientRect()
+.top;
 
 
 
-        counters.forEach(counter=>{
+if(
+top < window.innerHeight
+&&
+!started
+){
 
 
-            const target =
-            Number(
-                counter.dataset.target
-            );
-
-
-            let count=0;
-
-
-            const speed =
-            target / 100;
+started=true;
 
 
 
-            const update=()=>{
+counters.forEach(counter=>{
 
 
-                count += speed;
+let target =
+Number(
+counter.dataset.target
+);
 
 
 
-                if(count < target){
+let count=0;
 
 
-                    counter.innerText =
-                    Math.ceil(count);
+let speed =
+target / 100;
 
 
-                    requestAnimationFrame(
-                        update
-                    );
+
+function update(){
 
 
-                }
-
-                else{
+count += speed;
 
 
-                    counter.innerText =
-                    target
-                    +
-                    "+";
+
+if(count < target){
 
 
-                }
+counter.innerText =
+Math.ceil(count);
 
 
-            };
 
+requestAnimationFrame(
+update
+);
 
-            update();
-
-
-        });
-
-
-    }
 
 
 }
 
+else{
 
+counter.innerText =
+target + "+";
+}
+}
+update();
+});
+}
+
+}
 
 window.addEventListener(
 "scroll",
 startCounter
 );
 
+// ===============================
+// BACK TO TOP BUTTON
+// ===============================
 
-
-
-
-
-
-
-// ==========================
-// NEWSLETTER VALIDATION
-// ==========================
-
-
-const newsletter =
-document.querySelector(
-".newsletter-form"
+const topBtn =
+document.getElementById(
+"topBtn"
 );
 
+window.addEventListener(
+"scroll",
+()=>{
+
+if(window.scrollY > 500){
+
+topBtn.classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+topBtn.classList.add(
+"hidden"
+);
+}
+
+});
+
+if(topBtn){
+
+topBtn.addEventListener(
+"click",
+()=>{
 
 
-if(newsletter){
+window.scrollTo({
 
+top:0,
 
-newsletter.addEventListener(
-"submit",
-(e)=>{
+behavior:"smooth"
 
-
-    e.preventDefault();
-
-
-
-    const email =
-    newsletter
-    .querySelector("input")
-    .value;
-
-
-
-    if(email===""){
-
-
-        alert(
-        "Please enter your email address."
-        );
-
-
-        return;
-
-
-    }
-
-
-
-    alert(
-    "Thank you for subscribing to Tour Master!"
-    );
-
-
-
-    newsletter.reset();
-
+});
 
 
 });
 
 
 }
+// ===============================
+// NEWSLETTER
+// ===============================
 
+const newsletter =
+document.getElementById(
+"newsletterForm"
+);
+if(newsletter){
+newsletter.addEventListener(
+"submit",
+(e)=>{
+e.preventDefault();
+const email =
+newsletter.querySelector(
+"input"
+).value;
+if(email.trim()===""){
+alert(
+"Please enter your email."
+);
+return;
+}
+alert(
+"Thank you for subscribing to Tour Master!"
+);
+newsletter.reset();
+});
+}
+// ===============================
+// BOOKING BUTTON
+// ===============================
 
+const bookButtons =
+document.querySelectorAll(
+".book-btn"
+);
 
+bookButtons.forEach(
+button=>{
+button.addEventListener(
+"click",
+()=>{
+alert(
+"Booking request received. Our team will contact you soon."
+);
 
+});
 
-
-
-
-// ==========================
+});
+// ===============================
 // SMOOTH SCROLL
-// ==========================
-
-
+// ===============================
 document
 .querySelectorAll(
 'a[href^="#"]'
 )
 .forEach(anchor=>{
-
-
 anchor.addEventListener(
 "click",
 function(e){
-
-
-    const target =
-    document.querySelector(
-        this.getAttribute("href")
-    );
-
-
-
-    if(target){
-
-
-        e.preventDefault();
-
-
-
-        target.scrollIntoView({
-
-            behavior:"smooth"
-
-        });
-
-
-    }
-
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-// ==========================
-// IMAGE LAZY LOADING
-// ==========================
-
-
-const images =
-document.querySelectorAll(
-"img"
-);
-
-
-
-images.forEach(img=>{
-
-
-    img.setAttribute(
-        "loading",
-        "lazy"
-    );
-
-
-});
-
-
-
-
-
-
-
-
-// ==========================
-// PACKAGE BOOKING BUTTON
-// ==========================
-
-
-const bookingButtons =
-document.querySelectorAll(
-".book-btn"
-);
-
-
-
-bookingButtons.forEach(button=>{
-
-
-button.addEventListener(
-"click",
-()=>{
-
-
-    alert(
-    "Your booking request has been received. Our team will contact you soon."
-    );
-
-
-});
-
-
-});
-
-
-
-
-
-
-
-
-// ==========================
-// CURRENT YEAR FOOTER
-// ==========================
-
-
-const year =
+const target =
 document.querySelector(
-".footer-bottom p"
+this.getAttribute("href")
 );
 
+if(target){
+e.preventDefault();
+target.scrollIntoView({
 
+behavior:"smooth"
+});
+}
+});
+});
 
-if(year){
+// ===============================
+// IMAGE LAZY LOAD
+// ===============================
+document
+.querySelectorAll("img")
+.forEach(img=>{
+img.loading="lazy";
+});
+// ===============================
+// FOOTER YEAR AUTO UPDATE
+// ===============================
+const yearText =
+document.querySelector(
+"footer p"
+);
 
+if(yearText){
 
-year.innerHTML =
-year.innerHTML.replace(
+yearText.innerHTML =
+yearText.innerHTML.replace(
 "2026",
 new Date()
 .getFullYear()
 );
 
-
 }
-
-
-
-
-
-/* ==========================================================
-        END OF SCRIPT.JS
-
-        TOUR MASTER WEBSITE
-
-        JavaScript Completed:
-
-        ✔ Interactive Navbar
-        ✔ Theme System
-        ✔ Counters
-        ✔ Animations
-        ✔ Form Handling
-        ✔ Responsive Features
-
-=========================================================== */
+console.log(
+"Tour Master Website Loaded Successfully 🚀"
+);
