@@ -1,0 +1,272 @@
+/* ==========================================================================
+   1. CSS VARIABLES & BASE STYLES
+   ========================================================================== */
+:root {
+    --bg-dark: #12231c;
+    --card-beige: #dcd0be;
+    --card-dark: #1a3026;
+    --border-dark: #274738;
+    --text-light: #f3efe6;
+    --text-muted: #a3b8ac;
+    --text-dark: #1e2822;
+    --btn-dark: #3e4842;
+    --btn-hover: #2a332d;
+    --accent-gold: #e2c185;
+    
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Section Header Styling */
+.section-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 50px auto;
+}
+
+.section-header h2 {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.section-header h3.subtitle {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   2. SECTION 1: PACKAGES SECTION
+   ========================================================================== */
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.package-card {
+    background-color: var(--card-beige);
+    color: var(--text-dark);
+    border-radius: 28px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.package-img-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.package-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.package-type-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(18, 35, 28, 0.85);
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.package-content {
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.package-title {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1a231e;
+    margin-bottom: 10px;
+}
+
+.package-desc {
+    font-size: 0.85rem;
+    color: #4a544e;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.package-details {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333d37;
+}
+
+.detail-item i {
+    font-size: 1.1rem;
+    width: 20px;
+    color: #4a544e;
+}
+
+.package-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.package-price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a231e;
+}
+
+.btn-book {
+    background-color: var(--btn-dark);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-book:hover {
+    background-color: var(--btn-hover);
+}
+
+
+
+/* ==========================================================================
+   4. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+    .section-header h2 { font-size: 1.8rem; }
+    .section-header h3.subtitle { font-size: 1.5rem; }
+    .packages-grid, .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* VIP / Normal Switcher Button Styles */
+.type-switcher {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(18, 35, 28, 0.85);
+    border-radius: 20px;
+    padding: 3px;
+    display: flex;
+    gap: 4px;
+    backdrop-filter: blur(4px);
+}
+
+.switcher-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.switcher-btn.active {
+    background-color: var(--accent-gold);
+    color: #12231c;
+}
+/* VIP / Normal Switcher Button Styles */
+.type-switcher {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(18, 35, 28, 0.85);
+    border-radius: 20px;
+    padding: 3px;
+    display: flex;
+    gap: 4px;
+    backdrop-filter: blur(4px);
+}
+
+.switcher-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.switcher-btn.active {
+    background-color: var(--accent-gold);
+    color: #12231c;
+}

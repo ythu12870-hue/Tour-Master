@@ -1,0 +1,214 @@
+:root {
+    --bg-dark-green: #112822;
+    --card-bg-sand: #d6cbbe;
+    --accent-gold: #c2a649;
+    --text-white: #ffffff;
+    --text-dark: #222222;
+    --nav-bg: #cfc2b2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark-green);
+    color: var(--text-white);
+}
+
+/* Header & Navbar */
+
+
+.brand-name {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.sub-name {
+    font-size: 11px;
+    color: #555;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    font-weight: 700;
+}
+
+/* Destination Section Header */
+.destination-section {
+    padding: 40px 60px 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-tag {
+    font-size: 18px;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 13px;
+    color: #a0b4ae;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* Grid Layout */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* Destination Card Style */
+.destination-card {
+    background-color: var(--card-bg-sand);
+    border-radius: 16px;
+    overflow: hidden;
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 180px;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(40, 40, 40, 0.75);
+    color: #ffffff;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 11px;
+    color: #4a4a4a;
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.card-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.card-tags span {
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+
+.explore-link {
+    text-decoration: none;
+    color: #333333;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Promo Card Style */
+.promo-card {
+    background: linear-gradient(135deg, #1fa396 0%, #177174 100%);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.promo-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+}
+
+.btn-promo {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 11px;
+    display: inline-block;
+    margin-top: 15px;
+}
+/* Destination Card နှင့် Promo Card နှစ်ခုလုံး Cursor တင်လျှင် ကြွလာစေရန် */
+.destination-card, .promo-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover, .promo-card:hover {
+    cursor: pointer;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
