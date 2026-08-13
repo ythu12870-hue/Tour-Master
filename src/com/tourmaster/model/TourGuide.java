@@ -7,7 +7,7 @@ public class TourGuide {
     private String gender;
     private String phone;
     private String email;
-    private String languages;
+    private String language;
     private int experienceYears;
     private String status;
 
@@ -23,7 +23,7 @@ public class TourGuide {
             String gender,
             String phone,
             String email,
-            String languages,
+            String language,
             int experienceYears,
             String status) {
 
@@ -31,7 +31,7 @@ public class TourGuide {
         this.gender = gender;
         this.phone = phone;
         this.email = email;
-        this.languages = languages;
+        this.language = language;
         this.experienceYears = experienceYears;
         this.status = status;
     }
@@ -44,7 +44,7 @@ public class TourGuide {
             String gender,
             String phone,
             String email,
-            String languages,
+            String language,
             int experienceYears,
             String status) {
 
@@ -53,7 +53,7 @@ public class TourGuide {
         this.gender = gender;
         this.phone = phone;
         this.email = email;
-        this.languages = languages;
+        this.language = language;
         this.experienceYears = experienceYears;
         this.status = status;
     }
@@ -105,11 +105,11 @@ public class TourGuide {
 
 
     public String getLanguages() {
-        return languages;
+        return language;
     }
 
-    public void setLanguages(String languages) {
-        this.languages = languages;
+    public void setLanguages(String language) {
+        this.language = language;
     }
 
 
@@ -140,7 +140,7 @@ public class TourGuide {
                 ", gender='" + gender + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", languages='" + languages + '\'' +
+                ", language='" + language + '\'' +
                 ", experienceYears=" + experienceYears +
                 ", status='" + status + '\'' +
                 '}';

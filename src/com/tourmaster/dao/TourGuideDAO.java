@@ -26,7 +26,7 @@ public class TourGuideDAO {
                     gender,
                     phone,
                     email,
-                    languages,
+                    language,
                     experience_years,
                     status
                 )
@@ -229,7 +229,7 @@ public class TourGuideDAO {
                     gender = ?,
                     phone = ?,
                     email = ?,
-                    languages = ?,
+                    language = ?,
                     experience_years = ?,
                     status = ?
                 WHERE id = ?
